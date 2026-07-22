@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak WebDev - Portfolio</title>
+    <style>
+        /* Basic Styling & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Glassmorphism Effect */
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Header Styling */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeInDown 0.8s ease-in-out;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Top-Left Login Button */
+        .login-toggle-btn {
+            background: transparent;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .login-toggle-btn:hover {
+            background-color: #38bdf8;
+            color: #0b0f19;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero Section with Responsive Scaling */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 70px;
+            background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.9)), 
+                        url('https://tse2.mm.bing.net/th/id/OIP.oBeQQq3u_xTWc08_59vJLgHaEK?r=0&pid=ImgDet&w=203&h=114&c=7&o=7&rm=3') no-repeat center center/cover;
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Screen ke hisab se text apne aap chhota-bada hoga */
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 850;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #38bdf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            color: #9ca3af;
+            max-width: 600px;
+        }
+
+        /* Modal Popup Login Screen */
+        .login-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 7, 12, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            animation: popUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-btn:hover {
+            color: #ffffff;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.8rem;
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #d1d5db;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: #0b0f19;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Fully Responsive Cards & High-Quality Images Layout */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        .features {
+            display: grid;
+            /* Ye line automatically decide karegi ki mobile me 1 card aaye aur PC me 3 cards */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-in-out;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .card-img-link {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 200px; /* Sabhi photos ek barabar aur perfect height me rahengi */
+        }
+        .card-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover; /* Photo bina kate aur stretch hue poori jagah fit hogi */
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+        .card-img-link:hover .card-img {
+            transform: scale(1.08); /* Hover par smooth zoom effect */
+        }
+        .card-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+        .card-content p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .view-btn {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .view-btn:hover {
+            background: #38bdf8;
+            color: #0b0f19;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #05070c;
+            color: #6b7280;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        /* Mobile Screens ke liye Media Query adjustment */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            nav ul {
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+            .hero {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="nav-left">
+            <div class="logo">DeepakWeb</div>
+            <button class="login-toggle-btn" id="openLoginBtn">Login</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to the <span>Deepak WebDev</span></h1>
+        <p>My first web. Thank for visit, scroll and enjoy the web!</p>
+    </section>
+
+    <!-- Hidden Login Modal -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-container glass-effect">
+            <span class="close-btn" id="closeLoginBtn">&times;</span>
+            <h2>Member Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email or Username</label>
+                    <input type="text" id="email" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn-submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cards Section with Fully Responsive Images -->
+    <div class="container">
+        <h2 class="section-title">Core Features</h2>
+        <div class="features">
+            
+            <!-- Card 1 -->
+            <div class="card glass-effect">
+                <a href="https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
+                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
+                </a>
+                <div class="card-content">
+                    <h3>Lightning Fast Code</h3>
+                    <p>Optimized architecture built using modern HTML5 and CSS3 structures for instant response times.</p>
+                    <a href="https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card glass-effect">
+                <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
+                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
+                </a>
+                <div class="card-content">
+                    <h3>Glass UI & Animation</h3>
+                    <p>Immersive visual aesthetics utilizing advanced backdrop filters, smooth keyframe transitions, and dark themes.</p>
+                    <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card glass-effect">
+                <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
+                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
+                </a>
+                <div class="card-content">
+                    <h3>Dynamic Control</h3>
+                    <p>Interactive DOM automation powered by custom JavaScript logic for seamless modals and tool toggles.</p>
+                    <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Deepak WebDev. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Controls -->
+    <script>
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        const loginOverlay = document.getElementById('loginOverlay');
+        const closeLoginBtn = document.getElementById('closeLoginBtn');
+        const loginForm = document.getElementById('loginForm');
+
+        openLoginBtn.addEventListener('click', () => {
+            loginOverlay.style.display = 'flex';
+        });
+
+        closeLoginBtn.addEventListener('click', () => {
+            loginOverlay.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginOverlay) {
+                loginOverlay.style.display = 'none';
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if(email) {
+                alert('Welcome back, ' + email + '!');
+                loginForm.reset();
+                loginOverlay.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
