@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak WebDev - Portfolio</title>
     <style>
-        /* Basic Styling & Reset */
+        /* Basic Reset & Styling */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* Smooth Animations */
+        /* Animations */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -73,7 +73,6 @@
             letter-spacing: 0.5px;
         }
         
-        /* Top-Left Login Button */
         .login-toggle-btn {
             background: transparent;
             border: 2px solid #38bdf8;
@@ -105,39 +104,86 @@
             color: #38bdf8;
         }
 
-        /* Hero Section with Responsive Scaling */
+        /* Updated Modern Hero Section (Based on Screenshot UI) */
         .hero {
-            min-height: 85vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 1.5rem;
             margin-top: 70px;
-            background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.9)), 
-                        url('https://tse2.mm.bing.net/th/id/OIP.oBeQQq3u_xTWc08_59vJLgHaEK?r=0&pid=ImgDet&w=203&h=114&c=7&o=7&rm=3') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(30, 20, 60, 0.6) 0%, rgba(11, 15, 25, 0.95) 80%),
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop') no-repeat center center/cover;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            animation: fadeInDown 0.8s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 1.2rem;
+            color: #ffffff;
+            font-weight: 800;
+            max-width: 900px;
+            line-height: 1.2;
             animation: fadeInDown 1s ease-in-out;
         }
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem); /* Screen ke hisab se text apne aap chhota-bada hoga */
-            margin-bottom: 1rem;
-            color: #ffffff;
-            font-weight: 850;
-        }
         .hero h1 span {
-            background: linear-gradient(135deg, #38bdf8, #c084fc);
+            background: linear-gradient(135deg, #38bdf8, #c084fc, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .hero p {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             color: #9ca3af;
-            max-width: 600px;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-in-out;
         }
 
-        /* Modal Popup Login Screen */
+        /* Pill Feature Badges matching the Reference Image */
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+        .pill-tag {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            color: #f3f4f6;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .pill-tag:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Popup Login Screen (Dribbble Inspired UI) */
         .login-overlay {
             display: none;
             position: fixed;
@@ -145,8 +191,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 7, 12, 0.8);
-            backdrop-filter: blur(8px);
+            background: rgba(5, 7, 12, 0.85);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -154,11 +200,13 @@
         }
         .login-container {
             width: 100%;
-            max-width: 420px;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            max-width: 400px;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
             position: relative;
+            background: rgba(13, 17, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             animation: popUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .close-btn {
@@ -166,7 +214,7 @@
             top: 15px;
             right: 20px;
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 300;
             color: #9ca3af;
             cursor: pointer;
             transition: color 0.3s;
@@ -176,54 +224,114 @@
         }
         .login-container h2 {
             text-align: center;
-            margin-bottom: 1.8rem;
+            margin-bottom: 0.5rem;
             color: #ffffff;
             font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .login-subtitle {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
         }
         .form-group {
-            margin-bottom: 1.4rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #d1d5db;
+            margin-bottom: 1.2rem;
         }
         .form-group input {
             width: 100%;
             padding: 0.9rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.3s ease;
         }
+        .form-group input::placeholder {
+            color: #6b7280;
+        }
         .form-group input:focus {
             border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+            background: rgba(255, 255, 255, 0.06);
         }
         .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            background: #f3f4f6;
             color: #0b0f19;
             padding: 0.9rem;
             border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.05rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: 0.5rem;
         }
         .btn-submit:hover {
-            opacity: 0.9;
+            background: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
-        /* Fully Responsive Cards & High-Quality Images Layout */
+        /* Social Logins */
+        .social-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+        .social-divider::before, .social-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .social-divider span {
+            padding: 0 10px;
+        }
+        .social-btns {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .social-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.6rem;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .switch-auth {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        .switch-auth a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .switch-auth a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cards Section */
         .container {
             max-width: 1200px;
             margin: 4rem auto;
@@ -238,7 +346,6 @@
         }
         .features {
             display: grid;
-            /* Ye line automatically decide karegi ki mobile me 1 card aaye aur PC me 3 cards */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
@@ -246,7 +353,6 @@
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-in-out;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             display: flex;
             flex-direction: column;
@@ -259,19 +365,18 @@
         .card-img-link {
             display: block;
             position: relative;
-            overflow: hidden;
             width: 100%;
-            height: 200px; /* Sabhi photos ek barabar aur perfect height me rahengi */
+            height: 200px;
         }
         .card-img {
             width: 100%;
             height: 100%;
-            background-size: cover; /* Photo bina kate aur stretch hue poori jagah fit hogi */
+            background-size: cover;
             background-position: center;
             transition: transform 0.4s ease;
         }
         .card-img-link:hover .card-img {
-            transform: scale(1.08); /* Hover par smooth zoom effect */
+            transform: scale(1.08);
         }
         .card-content {
             padding: 1.8rem;
@@ -309,27 +414,13 @@
         }
 
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #05070c;
-            color: #6b7280;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 4rem;
-        }
+        <footer>
+            <p>&copy; 2026 Deepak WebDev. All rights reserved.</p>
+        </footer>
 
-        /* Mobile Screens ke liye Media Query adjustment */
         @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-            nav ul {
-                gap: 12px;
-                font-size: 0.9rem;
-            }
-            .hero {
-                padding: 1.5rem;
-            }
+            header { padding: 1rem; }
+            nav ul { gap: 12px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -351,36 +442,52 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Modern Hero Section (Matching Screenshot UI) -->
     <section class="hero">
-        <h1>Welcome to the <span>Deepak WebDev</span></h1>
-        <p>My first web. Thank for visit, scroll and enjoy the web!</p>
+        <div class="hero-badge">ENJOY THE WEB </div>
+        <h1>Explore <span>Web Design DEEPAK </span> & SATYAM </h1>
+        <p>HELLO DOSTO YE MERA FIRST WEB HONE WALA HE JAHA ME PYTHON KE CODE UPLOD KRNE WALA HU.</p>
+        <div class="hero-pills">
+            <span class="pill-tag">NICHE CODE </span>
+            <span class="pill-tag">PYTHON CODE </span>
+        </div>
     </section>
 
-    <!-- Hidden Login Modal -->
+    <!-- Authentication Modal (Dribbble UI Style) -->
     <div class="login-overlay" id="loginOverlay">
-        <div class="login-container glass-effect">
+        <div class="login-container">
             <span class="close-btn" id="closeLoginBtn">&times;</span>
-            <h2>Member Login</h2>
-            <form id="loginForm">
+            <h2 id="modalTitle">Log in</h2>
+            <p class="login-subtitle" id="modalSubtitle">Log in to your account and seamlessly continue managing your projects, ideas, and progress just where you left off.</p>
+            
+            <form id="authForm">
                 <div class="form-group">
-                    <label for="email">Email or Username</label>
-                    <input type="text" id="email" placeholder="Enter your username" required>
+                    <input type="email" id="email" placeholder="Enter your email address" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
                     <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" class="btn-submit">Sign In</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Log in</button>
             </form>
+
+            <div class="social-divider"><span>or continue with</span></div>
+            
+            <div class="social-btns">
+                <button class="social-btn" onclick="alert('Google login simulated!')">Google</button>
+                <button class="social-btn" onclick="alert('GitHub login simulated!')">GitHub</button>
+                <button class="social-btn" onclick="alert('Apple login simulated!')">Apple</button>
+            </div>
+
+            <div class="switch-auth">
+                <span id="switchText">Didn't have an account?</span> <a href="#" id="toggleAuthMode">Sign up</a>
+            </div>
         </div>
     </div>
 
-    <!-- Cards Section with Fully Responsive Images -->
+    <!-- Cards Section -->
     <div class="container">
         <h2 class="section-title">Core Features</h2>
         <div class="features">
-            
             <!-- Card 1 -->
             <div class="card glass-effect">
                 <a href="https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
@@ -416,7 +523,6 @@
                     <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -425,13 +531,29 @@
         <p>&copy; 2026 Deepak WebDev. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript Controls -->
+    <!-- JavaScript Real Authentication Logic -->
     <script>
         const openLoginBtn = document.getElementById('openLoginBtn');
         const loginOverlay = document.getElementById('loginOverlay');
         const closeLoginBtn = document.getElementById('closeLoginBtn');
-        const loginForm = document.getElementById('loginForm');
+        const authForm = document.getElementById('authForm');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const toggleAuthMode = document.getElementById('toggleAuthMode');
+        const switchText = document.getElementById('switchText');
 
+        let isSignUp = false;
+
+        // Check if already logged in via LocalStorage on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const loggedInUser = localStorage.getItem('deepakWebUser');
+            if (loggedInUser) {
+                openLoginBtn.textContent = loggedInUser.split('@')[0];
+            }
+        });
+
+        // Open/Close Modal
         openLoginBtn.addEventListener('click', () => {
             loginOverlay.style.display = 'flex';
         });
@@ -446,13 +568,57 @@
             }
         });
 
-        loginForm.addEventListener('submit', (e) => {
+        // Toggle between Login and Sign Up mode
+        toggleAuthMode.addEventListener('click', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            if(email) {
-                alert('Welcome back, ' + email + '!');
-                loginForm.reset();
-                loginOverlay.style.display = 'none';
+            isSignUp = !isSignUp;
+            if (isSignUp) {
+                modalTitle.textContent = 'Create Account';
+                modalSubtitle.textContent = 'Sign up with your email to create a permanent account and access special features.';
+                submitBtn.textContent = 'Sign up';
+                switchText.textContent = 'Already have an account?';
+                toggleAuthMode.textContent = 'Log in';
+            } else {
+                modalTitle.textContent = 'Log in';
+                modalSubtitle.textContent = 'Log in to your account and seamlessly continue managing your projects, ideas, and progress just where you left off.';
+                submitBtn.textContent = 'Log in';
+                switchText.textContent = "Didn't have an account?";
+                toggleAuthMode.textContent = 'Sign up';
+            }
+        });
+
+        // Handle Real Form Submission (LocalStorage Authentication)
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (isSignUp) {
+                if (localStorage.getItem('user_' + email)) {
+                    alert('Account with this email already exists! Please log in.');
+                } else {
+                    localStorage.setItem('user_' + email, password);
+                    localStorage.setItem('deepakWebUser', email);
+                    alert('Account created successfully! Welcome, ' + email);
+                    openLoginBtn.textContent = email.split('@')[0];
+                    authForm.reset();
+                    loginOverlay.style.display = 'none';
+                }
+            } else {
+                const storedPassword = localStorage.getItem('user_' + email);
+                if (storedPassword) {
+                    if (storedPassword === password) {
+                        localStorage.setItem('deepakWebUser', email);
+                        alert('Login successful! Welcome back, ' + email);
+                        openLoginBtn.textContent = email.split('@')[0];
+                        authForm.reset();
+                        loginOverlay.style.display = 'none';
+                    } else {
+                        alert('Incorrect password! Please try again.');
+                    }
+                } else {
+                    alert('No account found with this email. Please sign up first!');
+                }
             }
         });
     </script>
