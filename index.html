@@ -104,7 +104,7 @@
             color: #38bdf8;
         }
 
-        /* Updated Modern Hero Section (Based on Screenshot UI) */
+        /* Modern Hero Section */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -156,7 +156,6 @@
             animation: fadeInUp 1s ease-in-out;
         }
 
-        /* Pill Feature Badges matching the Reference Image */
         .hero-pills {
             display: flex;
             flex-wrap: wrap;
@@ -173,17 +172,9 @@
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .pill-tag:hover {
-            background: rgba(56, 189, 248, 0.15);
-            border-color: #38bdf8;
-            color: #38bdf8;
-            transform: translateY(-2px);
         }
 
-        /* Modal Popup Login Screen (Dribbble Inspired UI) */
+        /* Modal Popup Login Screen */
         .login-overlay {
             display: none;
             position: fixed;
@@ -219,9 +210,7 @@
             cursor: pointer;
             transition: color 0.3s;
         }
-        .close-btn:hover {
-            color: #ffffff;
-        }
+        .close-btn:hover { color: #ffffff; }
         .login-container h2 {
             text-align: center;
             margin-bottom: 0.5rem;
@@ -239,7 +228,7 @@
         .form-group {
             margin-bottom: 1.2rem;
         }
-        .form-group input {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 0.9rem 1rem;
             background: rgba(255, 255, 255, 0.03);
@@ -250,10 +239,7 @@
             outline: none;
             transition: all 0.3s ease;
         }
-        .form-group input::placeholder {
-            color: #6b7280;
-        }
-        .form-group input:focus {
+        .form-group input:focus, .form-group textarea:focus {
             border-color: #38bdf8;
             box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
             background: rgba(255, 255, 255, 0.06);
@@ -269,7 +255,6 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 0.5rem;
         }
         .btn-submit:hover {
             background: #ffffff;
@@ -277,7 +262,6 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
-        /* Social Logins */
         .social-divider {
             display: flex;
             align-items: center;
@@ -291,14 +275,8 @@
             flex: 1;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .social-divider span {
-            padding: 0 10px;
-        }
-        .social-btns {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
+        .social-divider span { padding: 0 10px; }
+        .social-btns { display: flex; gap: 10px; margin-bottom: 1.5rem; }
         .social-btn {
             flex: 1;
             background: rgba(255, 255, 255, 0.03);
@@ -307,31 +285,16 @@
             border-radius: 8px;
             color: #d1d5db;
             font-size: 0.85rem;
-            font-weight: 500;
             cursor: pointer;
+            text-align: center;
             transition: all 0.3s;
-            text-align: center;
         }
-        .social-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-        }
+        .social-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
 
-        .switch-auth {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #9ca3af;
-        }
-        .switch-auth a {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .switch-auth a:hover {
-            text-decoration: underline;
-        }
+        .switch-auth { text-align: center; font-size: 0.85rem; color: #9ca3af; }
+        .switch-auth a { color: #38bdf8; text-decoration: none; font-weight: 600; }
 
-        /* Cards Section */
+        /* Main Container & Sections */
         .container {
             max-width: 1200px;
             margin: 4rem auto;
@@ -344,74 +307,141 @@
             color: #fff;
             font-weight: 700;
         }
-        .features {
+        
+        .upload-section {
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 4rem;
+        }
+        .upload-section h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Shared Code Feed Grid */
+        .code-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 25px;
         }
-        .card {
+        .code-card {
             border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-        .card-img-link {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 200px;
-        }
-        .card-img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.4s ease;
-        }
-        .card-img-link:hover .card-img {
-            transform: scale(1.08);
-        }
-        .card-content {
             padding: 1.8rem;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            background: rgba(17, 24, 39, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
         }
-        .card-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #fff;
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
         }
-        .card-content p {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        .view-btn {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
+        .code-card h4 {
             color: #38bdf8;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-            text-align: center;
+            font-size: 1.2rem;
         }
-        .view-btn:hover {
+        
+        /* Copy Button Style */
+        .copy-btn {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover {
             background: #38bdf8;
             color: #0b0f19;
         }
+
+        .code-author {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+        .code-box {
+            background: #05070c;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            color: #34d399;
+            font-family: monospace;
+            font-size: 0.85rem;
+            max-height: 160px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Opinion & Suggestions Section */
+        .opinion-section {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1rem;
+        }
+        .opinion-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 0.6rem;
+        }
+        .opinion-list {
+            max-height: 120px;
+            overflow-y: auto;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+        }
+        .opinion-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #38bdf8;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 0.5rem;
+            color: #e5e7eb;
+        }
+        .opinion-item span {
+            display: block;
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+        .opinion-form {
+            display: flex;
+            gap: 8px;
+        }
+        .opinion-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.8rem;
+            outline: none;
+        }
+        .opinion-btn {
+            background: #38bdf8;
+            color: #0b0f19;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .opinion-btn:hover { opacity: 0.9; }
 
         /* Footer */
         <footer>
@@ -442,23 +472,25 @@
         </nav>
     </header>
 
-    <!-- Modern Hero Section (Matching Screenshot UI) -->
+    <!-- Modern Hero Section -->
     <section class="hero">
-        <div class="hero-badge">ENJOY THE WEB </div>
-        <h1>Explore <span>Web Design DEEPAK </span> & SATYAM </h1>
-        <p>HELLO DOSTO YE MERA FIRST WEB HONE WALA HE JAHA ME PYTHON KE CODE UPLOD KRNE WALA HU.</p>
+        <div class="hero-badge">UI & UX Inspiration</div>
+        <h1>Explore <span>Web Design Examples</span> & Creative UI</h1>
+        <p>Discover cutting-edge digital experiences, seamless layout structures, and high-performance frontend code built for the future.</p>
         <div class="hero-pills">
-            <span class="pill-tag">NICHE CODE </span>
-            <span class="pill-tag">PYTHON CODE </span>
+            <span class="pill-tag">Minimal UI</span>
+            <span class="pill-tag">Neumorphism</span>
+            <span class="pill-tag">AI-Driven Design</span>
+            <span class="pill-tag">Glassmorphism</span>
         </div>
     </section>
 
-    <!-- Authentication Modal (Dribbble UI Style) -->
+    <!-- Authentication Modal -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-container">
             <span class="close-btn" id="closeLoginBtn">&times;</span>
             <h2 id="modalTitle">Log in</h2>
-            <p class="login-subtitle" id="modalSubtitle">Log in to your account and seamlessly continue managing your projects, ideas, and progress just where you left off.</p>
+            <p class="login-subtitle" id="modalSubtitle">Log in to your account and seamlessly continue managing your projects.</p>
             
             <form id="authForm">
                 <div class="form-group">
@@ -484,45 +516,30 @@
         </div>
     </div>
 
-    <!-- Cards Section -->
+    <!-- Community Code Hub & Suggestion Box -->
     <div class="container">
-        <h2 class="section-title">Core Features</h2>
-        <div class="features">
-            <!-- Card 1 -->
-            <div class="card glass-effect">
-                <a href="https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
-                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
-                </a>
-                <div class="card-content">
-                    <h3>Lightning Fast Code</h3>
-                    <p>Optimized architecture built using modern HTML5 and CSS3 structures for instant response times.</p>
-                    <a href="https://th.bing.com/th?q=Lilium&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
+        <h2 class="section-title">Community Code & Feedback Hub</h2>
+        
+        <!-- Code Upload Form Box -->
+        <div class="upload-section glass-effect">
+            <h3>Publish Your Code for Review</h3>
+            <form id="codeUploadForm">
+                <div class="form-group">
+                    <input type="text" id="projectTitle" placeholder="Project Title (e.g., Glassmorphism Login Card)" required>
                 </div>
-            </div>
+                <div class="form-group">
+                    <input type="text" id="coderName" placeholder="Your Name or Username" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="codeSnippet" rows="6" placeholder="Paste your HTML/CSS/JS code here so others can copy and review..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Upload Code</button>
+            </form>
+        </div>
 
-            <!-- Card 2 -->
-            <div class="card glass-effect">
-                <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
-                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
-                </a>
-                <div class="card-content">
-                    <h3>Glass UI & Animation</h3>
-                    <p>Immersive visual aesthetics utilizing advanced backdrop filters, smooth keyframe transitions, and dark themes.</p>
-                    <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card glass-effect">
-                <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="card-img-link">
-                    <div class="card-img" style="background-image: url('https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247');"></div>
-                </a>
-                <div class="card-content">
-                    <h3>Dynamic Control</h3>
-                    <p>Interactive DOM automation powered by custom JavaScript logic for seamless modals and tool toggles.</p>
-                    <a href="https://th.bing.com/th?q=Magnolia&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" target="_blank" class="view-btn">View Image &rarr;</a>
-                </div>
-            </div>
+        <!-- Shared Codes Feed -->
+        <div class="code-grid" id="codeGridContainer">
+            <!-- Dynamic Uploaded Codes will appear here -->
         </div>
     </div>
 
@@ -531,7 +548,7 @@
         <p>&copy; 2026 Deepak WebDev. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript Real Authentication Logic -->
+    <!-- JavaScript Logic -->
     <script>
         const openLoginBtn = document.getElementById('openLoginBtn');
         const loginOverlay = document.getElementById('loginOverlay');
@@ -545,49 +562,36 @@
 
         let isSignUp = false;
 
-        // Check if already logged in via LocalStorage on page load
         window.addEventListener('DOMContentLoaded', () => {
             const loggedInUser = localStorage.getItem('deepakWebUser');
             if (loggedInUser) {
                 openLoginBtn.textContent = loggedInUser.split('@')[0];
             }
+            loadCommunityCodes();
         });
 
-        // Open/Close Modal
-        openLoginBtn.addEventListener('click', () => {
-            loginOverlay.style.display = 'flex';
-        });
+        openLoginBtn.addEventListener('click', () => { loginOverlay.style.display = 'flex'; });
+        closeLoginBtn.addEventListener('click', () => { loginOverlay.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target === loginOverlay) loginOverlay.style.display = 'none'; });
 
-        closeLoginBtn.addEventListener('click', () => {
-            loginOverlay.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === loginOverlay) {
-                loginOverlay.style.display = 'none';
-            }
-        });
-
-        // Toggle between Login and Sign Up mode
         toggleAuthMode.addEventListener('click', (e) => {
             e.preventDefault();
             isSignUp = !isSignUp;
             if (isSignUp) {
                 modalTitle.textContent = 'Create Account';
-                modalSubtitle.textContent = 'Sign up with your email to create a permanent account and access special features.';
+                modalSubtitle.textContent = 'Sign up with your email to create a permanent account.';
                 submitBtn.textContent = 'Sign up';
                 switchText.textContent = 'Already have an account?';
                 toggleAuthMode.textContent = 'Log in';
             } else {
                 modalTitle.textContent = 'Log in';
-                modalSubtitle.textContent = 'Log in to your account and seamlessly continue managing your projects, ideas, and progress just where you left off.';
+                modalSubtitle.textContent = 'Log in to your account and seamlessly continue managing your projects.';
                 submitBtn.textContent = 'Log in';
                 switchText.textContent = "Didn't have an account?";
                 toggleAuthMode.textContent = 'Sign up';
             }
         });
 
-        // Handle Real Form Submission (LocalStorage Authentication)
         authForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
@@ -595,32 +599,147 @@
 
             if (isSignUp) {
                 if (localStorage.getItem('user_' + email)) {
-                    alert('Account with this email already exists! Please log in.');
+                    alert('Account already exists! Please log in.');
                 } else {
                     localStorage.setItem('user_' + email, password);
                     localStorage.setItem('deepakWebUser', email);
-                    alert('Account created successfully! Welcome, ' + email);
+                    alert('Account created successfully!');
                     openLoginBtn.textContent = email.split('@')[0];
                     authForm.reset();
                     loginOverlay.style.display = 'none';
                 }
             } else {
                 const storedPassword = localStorage.getItem('user_' + email);
-                if (storedPassword) {
-                    if (storedPassword === password) {
-                        localStorage.setItem('deepakWebUser', email);
-                        alert('Login successful! Welcome back, ' + email);
-                        openLoginBtn.textContent = email.split('@')[0];
-                        authForm.reset();
-                        loginOverlay.style.display = 'none';
-                    } else {
-                        alert('Incorrect password! Please try again.');
-                    }
+                if (storedPassword && storedPassword === password) {
+                    localStorage.setItem('deepakWebUser', email);
+                    alert('Login successful!');
+                    openLoginBtn.textContent = email.split('@')[0];
+                    authForm.reset();
+                    loginOverlay.style.display = 'none';
                 } else {
-                    alert('No account found with this email. Please sign up first!');
+                    alert('Invalid email or password!');
                 }
             }
         });
+
+        // --- Community Code Sharing, Copying & Suggestions Logic ---
+        const codeUploadForm = document.getElementById('codeUploadForm');
+        const codeGridContainer = document.getElementById('codeGridContainer');
+
+        codeUploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('projectTitle').value.trim();
+            const author = document.getElementById('coderName').value.trim();
+            const code = document.getElementById('codeSnippet').value.trim();
+
+            const newPost = {
+                id: Date.now(),
+                title,
+                author,
+                code,
+                opinions: []
+            };
+
+            let posts = JSON.parse(localStorage.getItem('communityCodesHub')) || [];
+            posts.unshift(newPost);
+            localStorage.setItem('communityCodesHub', JSON.stringify(posts));
+
+            codeUploadForm.reset();
+            loadCommunityCodes();
+            alert('Your code has been published successfully!');
+        });
+
+        function loadCommunityCodes() {
+            let posts = JSON.parse(localStorage.getItem('communityCodesHub')) || [];
+            codeGridContainer.innerHTML = '';
+
+            if (posts.length === 0) {
+                codeGridContainer.innerHTML = '<p style="color: #9ca3af; text-align: center; grid-column: 1/-1;">No code shared yet. Upload yours to get suggestions!</p>';
+                return;
+            }
+
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'code-card';
+                
+                let opinionsHtml = '';
+                post.opinions.forEach(op => {
+                    opinionsHtml += `
+                        <div class="opinion-item">
+                            "${escapeHtml(op.text)}"
+                            <span>— ${escapeHtml(op.user)}</span>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header-flex">
+                        <div>
+                            <h4>${escapeHtml(post.title)}</h4>
+                            <div class="code-author">By: ${escapeHtml(post.author)}</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyCodeText(this, \`${encodeURIComponent(post.code)}\`)">Copy Code</button>
+                    </div>
+                    <div class="code-box" id="codeText_${post.id}">${escapeHtml(post.code)}</div>
+                    
+                    <div class="opinion-section">
+                        <div class="opinion-title">💡 Opinions & What to improve:</div>
+                        <div class="opinion-list">
+                            ${opinionsHtml || '<div style="color: #6b7280; font-size: 0.75rem; font-style: italic;">No suggestions yet. Be the first to share your opinion!</div>'}
+                        </div>
+                        <form class="opinion-form" onsubmit="addOpinion(event, ${post.id})">
+                            <input type="text" class="opinion-input" id="opinionInput_${post.id}" placeholder="Suggest what to add or change..." required>
+                            <button type="submit" class="opinion-btn">Send</button>
+                        </form>
+                    </div>
+                `;
+                codeGridContainer.appendChild(card);
+            });
+        }
+
+        // Copy Code Functionality
+        function copyCodeText(buttonElem, encodedCode) {
+            const actualCode = decodeURIComponent(encodedCode);
+            navigator.clipboard.writeText(actualCode).then(() => {
+                const originalText = buttonElem.textContent;
+                buttonElem.textContent = 'Copied!';
+                buttonElem.style.background = '#34d399';
+                buttonElem.style.color = '#0b0f19';
+                setTimeout(() => {
+                    buttonElem.textContent = originalText;
+                    buttonElem.style.background = '';
+                    buttonElem.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy code!');
+            });
+        }
+
+        // Add Opinion / Suggestion Functionality
+        function addOpinion(event, postId) {
+            event.preventDefault();
+            const inputField = document.getElementById(`opinionInput_${postId}`);
+            const opinionText = inputField.value.trim();
+            const loggedInUser = localStorage.getItem('deepakWebUser');
+            const userName = loggedInUser ? loggedInUser.split('@')[0] : 'Coder';
+
+            if (!opinionText) return;
+
+            let posts = JSON.parse(localStorage.getItem('communityCodesHub')) || [];
+            posts = posts.map(post => {
+                if (post.id === postId) {
+                    post.opinions.push({ user: userName, text: opinionText });
+                }
+                return post;
+            });
+
+            localStorage.setItem('communityCodesHub', JSON.stringify(posts));
+            loadCommunityCodes();
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
     </script>
 
 </body>
